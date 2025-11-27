@@ -5,16 +5,9 @@ import json
 from functools import reduce
 from dateutil.relativedelta import relativedelta
 
-st.set_page_config(page_title="Data analyse", page_icon="🌕", layout="wide")
-
-st.title("Call Of Code ⚔️")
-
 # Initialize connection.
 conn = st.connection("postgresql", type="sql")
 references = st.secrets["filename"]
-
-# Perform query.
-st.subheader("Table turbine")
 
 def load_sql_table(conn, table: str) -> pd.DataFrame:
     """
@@ -156,29 +149,3 @@ def combine_data_sources() -> pd.DataFrame:
     )
 
     return df_merged
-
-
-
-# Charger le JSON brut
-# name = f"meteo_{datetime.utcnow().date().isoformat()}.json"
-# with open(f"tmp/{name}", "r", encoding="utf-8") as f:
-#     data = json.load(f)
-
-# # Extraire les données horaires
-# hourly = data["hourly"]
-
-# # Convertir en DataFrame
-# df = pd.DataFrame(hourly)
-
-# # Convertir la colonne "time" en datetime
-# df["time"] = pd.to_datetime(df["time"])
-# df.rename(columns={
-#             "time": "date",
-#             "temperature_2m": "temperature",
-#             "relativehumidity_2m": "humidity",
-#             "windspeed_10m": "windspeed",
-#             "pressure_msl": "pressure",
-#             }, inplace=True)
-
-# st.info("Température en dégré celsius, humidité en %, vitesse du vent en km/h et pression en hPa (hectoPascal)")
-# st.write(df)
