@@ -160,25 +160,25 @@ def combine_data_sources() -> pd.DataFrame:
 
 
 # Charger le JSON brut
-# name = f"meteo_{datetime.utcnow().date().isoformat()}.json"
-# with open(f"tmp/{name}", "r", encoding="utf-8") as f:
-#     data = json.load(f)
+name = f"meteo_{datetime.utcnow().date().isoformat()}.json"
+with open(f"tmp/{name}", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-# # Extraire les données horaires
-# hourly = data["hourly"]
+# Extraire les données horaires
+hourly = data["hourly"]
 
-# # Convertir en DataFrame
-# df = pd.DataFrame(hourly)
+# Convertir en DataFrame
+df = pd.DataFrame(hourly)
 
-# # Convertir la colonne "time" en datetime
-# df["time"] = pd.to_datetime(df["time"])
-# df.rename(columns={
-#             "time": "date",
-#             "temperature_2m": "temperature",
-#             "relativehumidity_2m": "humidity",
-#             "windspeed_10m": "windspeed",
-#             "pressure_msl": "pressure",
-#             }, inplace=True)
+# Convertir la colonne "time" en datetime
+df["time"] = pd.to_datetime(df["time"])
+df.rename(columns={
+            "time": "date",
+            "temperature_2m": "temperature",
+            "relativehumidity_2m": "humidity",
+            "windspeed_10m": "windspeed",
+            "pressure_msl": "pressure",
+            }, inplace=True)
 
-# st.info("Température en dégré celsius, humidité en %, vitesse du vent en km/h et pression en hPa (hectoPascal)")
-# st.write(df)
+st.info("Température en dégré celsius, humidité en %, vitesse du vent en km/h et pression en hPa (hectoPascal)")
+st.write(df)
