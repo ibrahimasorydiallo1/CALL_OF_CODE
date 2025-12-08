@@ -1,13 +1,12 @@
 import requests
 import json
+import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
 
-TMP_DIR = Path("tmp")
-TMP_DIR.mkdir(parents=True, exist_ok=True)
-
 def fetch_daily_weather(lat, lon):
     date = (datetime.utcnow() - timedelta(days=1)).date().isoformat()
+    # https:// indique que la communication est chiffrée par TLS/SSL.
 
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
@@ -22,6 +21,15 @@ def fetch_daily_weather(lat, lon):
     response = requests.get(url, params=params)
     response.raise_for_status()
     return response.json()
+
+TMP_DIR = Path("app/data/tmp")
+
+# Supprimer le dossier s'il existe (même s'il n'est pas vide)
+if TMP_DIR.exists():
+    shutil.rmtree(TMP_DIR)
+
+# Recréer le dossier
+TMP_DIR.mkdir(parents=True, exist_ok=True)
 
 def save_json(data, filename):
     filepath = TMP_DIR / filename

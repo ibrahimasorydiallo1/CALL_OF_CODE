@@ -76,6 +76,21 @@ L'évaluation de ce projet repose sur la combinaison de trois éléments princip
 2.  **Exhaustivité des Livrables :** Pertinence et documentation complète des productions demandées.
 3.  **Soutenance Orale :** Capacité à présenter, justifier et valoriser le travail réalisé devant un client professionnel (public technique), démontrant la maîtrise technique et la communication efficace.
 
+## Installation & Setup
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/ibrahimasorydiallo1/CALL_OF_CODE.git
+   cd CALL_OF_CODE
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
 ## Future direction
 
 Il y'a toujours des axes améliorations comme le fine-tuning du model d'IA, comme l'analyse approfondie des données
