@@ -1,5 +1,6 @@
 import streamlit as st
-# from routes import routes
+# from routes import redirection
+
 
 # En-tête principal avec image
 st.title("Call Of Code ⚔️")

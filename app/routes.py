@@ -12,3 +12,8 @@ def redirection(titre, nom_de_page):
     st.markdown("Vous pouvez maintenant passer à la page")
     if st.button(titre):
         st.switch_page(page=f"pages/{nom_de_page}.py")
+
+def connection_db():
+    """Établit une connexion à la base de données."""
+    conn = st.connection("postgresql", type="sql")
+    return conn

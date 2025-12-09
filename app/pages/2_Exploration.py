@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from routes import redirection
+from routes import redirection, connection_db
 from sklearn.impute import SimpleImputer
 from modules.mod_exploration import (combine_data_sources, print_api_data, encoder_cible,
                                      detection_outliers, traiter_outliers, standardisation,
@@ -14,7 +14,7 @@ from modules.mod_exploration import (combine_data_sources, print_api_data, encod
                                     )
 
 # Initialize connection.
-conn = st.connection("postgresql", type="sql")
+conn = connection_db()
 references = st.secrets["filename"]
 
 # En-tête principal
@@ -362,18 +362,22 @@ with onglet4:
 with onglet5:
     if "df_clean" in st.session_state:
         df_clean = st.session_state["df_clean"].copy()
-        
+
         with st.expander("ℹ️ Fonctionnement"):
-            st.info("""
+            st.info(
+                """
                 Cette onglet permet de standardiser les données afin que certaines colonnes n'aient pas un poids supérieur à d'autres dans la modélisation.\n
+                La normalisation permet de changer l’échelle des valeurs de notre dataset pour la standardiser.
+                Plus le nombre de colonnes du dataset est grand, plus la normalisation est longue à réaliser manuellement.
                 Il vous sera indiqué si vos données semblent déjà standardisées ou non et si ce n'est pas le cas, vous pourrez cocher la case pour le faire.
-            """)
-            
+            """
+            )
+
         colonne_target = st.session_state["target_corr"]
-        
+
         st.subheader("⚖️ Standardisation des données")
         standardisation(df_clean, colonne_target)    
-        
+
         st.write("***")
         st.markdown("### Vous pouvez maintenant passer à l'onglet suivant : 🎯 Résumé & Exports")
 
