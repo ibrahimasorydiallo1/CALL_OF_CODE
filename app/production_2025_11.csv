@@ -1,4 +1,4 @@
-date;turbin_id;energie_kWh;arret_planifie;arret_non_planifie
+date;turbine_id;energie_kWh;arret_planifie;arret_non_planifie
 2025-10-01;T001;26973;0;0
 2025-10-01;T002;26390;0;0
 2025-10-02;T001;28014;0;0
