@@ -2,8 +2,10 @@ from streamlit import Page
 import streamlit as st
 
 routes = [
-    Page("pages/1_Accueil.py", title="Accueil", icon="🏠"),
+    Page("pages/0_Accueil.py", title="Accueil", icon="🏠"),
+    Page("pages/1_Import.py", title="Import des données", icon="📥"),
     Page("pages/2_Exploration.py", title="Exploration et Traitements", icon="🔍"),
+    Page("pages/3_Machine Learning.py", title="Entraînement d'un modèle", icon="🦾"),
 ]
 
 def redirection(titre, nom_de_page):
@@ -13,7 +15,3 @@ def redirection(titre, nom_de_page):
     if st.button(titre):
         st.switch_page(page=f"pages/{nom_de_page}.py")
 
-def connection_db():
-    """Établit une connexion à la base de données."""
-    conn = st.connection("postgresql", type="sql")
-    return conn

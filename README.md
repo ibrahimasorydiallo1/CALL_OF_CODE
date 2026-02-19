@@ -103,5 +103,3 @@ Veuillez lire la [LICENSE](LICENSE) pour plus d'informations.
 ## Contact des collaborateurs
 
 - Ibrahima Sory DIALLO. I am available on linkedin https://www.linkedin.com/in/ibrahima-sory-diallo-isd/
-- Yasser KHALFALLI. 
-- Fatima-Zahra HMAMOU. 
