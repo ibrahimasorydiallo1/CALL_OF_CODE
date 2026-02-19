@@ -62,7 +62,7 @@ def load_clean_csv(path: str) -> pd.DataFrame:
     Example:
         >>> df = load_clean_csv("app/production_2025_10.csv")
     """
-    # return pd.read_csv(path, sep=";").dropna()
+    # return pd.read_csv(path, sep=";").dropna(inplace=True)
     return pd.read_csv(path, sep=";")
 
 
@@ -141,6 +141,10 @@ def combine_data_sources() -> pd.DataFrame:
     df_turbine   = load_sql_table(references["table_1"])
     df_inventory = load_sql_table(references["table_2"])
     df_raw       = load_sql_table(references["table_3"])
+
+    # df_turbine = df_turbine.dropna(inplace=True)
+    # df_inventory = df_inventory.dropna(inplace=True)
+    # df_raw = df_raw.dropna(inplace=True)
 
     # Fichier CSV du mois précédent
     csv_path = f"app/{references['csv']}_{prev.year}_{prev.month}.csv"
