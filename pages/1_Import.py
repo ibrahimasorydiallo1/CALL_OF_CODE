@@ -27,7 +27,7 @@ use_df_titanic = st.sidebar.checkbox("Utiliser le dataset sur le Titanic")
 
 # Si l'utilisateur veut utiliser le df sur le Titanic
 if use_df_titanic:
-    df = pd.read_csv("app/data/titanic.csv")
+    df = pd.read_csv("data/titanic.csv")
     # Enregistrement dans session_state
     st.success(f'✅ Données issues de "titanic.csv" importées avec succès !')
     state_write(df)
